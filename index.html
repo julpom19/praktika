@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div id="app" class="wrapper">
+            <div class="column">
+                <h3 class="h3">База знань</h3>
+                <div class="rules">
+                    <button id="add_rule_btn" @click="showModal" class="btn btn-outline-primary" v-if="!isRunning">Додати нове правило</button>
+                    <div v-if="rules.length == 0" class="placeholder">Список правил пустий</div>
+                    <rule v-for="(rule, index) in rules" :rule="rule" :index="index"></rule>
+                </div>
+            </div>
+            <div class="column">
+                <h3 class="h3">Робоча пам'ять</h3>
+                <div class="working-memory">
+                    <fact_row v-for="factsArray in workingMemory" :array_of_facts="factsArray"></fact_row>
+                </div>
+            </div>
+            <div class="column">
+                <h3 class="h3">Робочий список правил</h3>
+                <div class="working-rules">
+                    <working_rules_row v-for="ruleIndexesArray in workingListOfRules" :array_of_rule_indexes="ruleIndexesArray"></working_rules_row>
+                </div>
+            </div>
+            <div class="column">
+                <h3 class="h3">Обране правило</h3>
+                <div class="choosed_rules">
+                    <choosed_rule v-for="selectedIndex in selectedRulesIndexes" :rule_index="selectedIndex"></choosed_rule>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="initial_data_wrapper">
+                    <table>
+                        <tr>
+                            <td><span>Список стартових фактів</span></td>
+                            <td><input type="text" v-model="startFactsStr" :disabled="isRunning"></td>
+                        </tr>
+                        <tr>
+                            <td><span>Стратегія по правилам</span></td>
+                            <td>
+                                <select v-model="strategy" :disabled="isRunning">
+                                    <option>Перше правило</option>
+                                    <option>Останнє правило</option>
+                                    <option>Спрощення</option>
+                                    <option>Ускладнення</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span>Стратегія по консеквенту</span></td>
+                            <td>
+                                <select v-model="consequent_strategy" :disabled="isRunning">
+                                    <option>Ширина</option>
+                                    <option>Глибина</option>
+                                    <option>Випадково</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="btn_wrapper">
+                    <button class="btn btn-outline-primary" id="btn_start" @click="start">{{isRunning ? 'СТОП' : 'СТАРТ'}}</button>
+                    <button class="btn btn-outline-primary" id="btn_prev" @click="prev" v-if="isRunning"><i class="material-icons">keyboard_arrow_left</i></button>
+                    <button class="btn btn-outline-primary" id="btn_next" @click="next" v-if="isRunning"><i class="material-icons">keyboard_arrow_right</i></button>
+                </div>
+            </div>
+            <div v-if="modalIsVisible" class="myModal">
+                <div class="new_rule_wrapper">
+                    <h3>Визначте правило</h3>
+                    <input type="text" v-model="ruleText" @keyup.enter="saveRule" autofocus>
+                    <div>
+                        <button class="btn btn-outline-primary" @click="cancelModal">Назад</button>
+                        <button class="btn btn-outline-primary" @click="saveRule">Зберегти</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <script src="https://unpkg.com/vue"></script>
+        <script src="https://unpkg.com/vuex"></script>
+        <script src="vuexstore.js"></script>
+        <script src="script.js"></script>
+        <script src="helpers/syntaxChecker.js"></script>
+    </body>
+</html>
