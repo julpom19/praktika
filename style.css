@@ -30,6 +30,7 @@ html, body {
 .rules, .working-memory, .working-rules, .choosed_rules {
     padding: 10px;
     overflow: auto;
+    height: calc(100% - 10%);
 }
 
 .flexWrapper {

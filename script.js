@@ -46,24 +46,24 @@ Vue.component('choosed_rule', {
     template: `<p>{{rule_index}}</p>`,
 });
 
-let startRules = [
-    'if a and b and n then f',
-    'if c and k or l then p or ',
-    'if a and f and p or c then r',
-    'if d or k and l then o and e',
-    'if r and a or f then h and m',
-    'if m or d and k or o then d',
-    'if s and c then l and h',
-    'if h then e',
-    'if e and l then s',
-    'if d or p and n then p and r',
-    'if r and s or e then f',
-    'if f and e or p and r then goal',
-    'if o and l or n then k',
-    'if m or c then d',
-    'if k and a and o then goal',
-    'if s and e and r then l'
-];
+// let startRules = [
+//     'if a and b and n then f',
+//     'if c and k or l then p or ',
+//     'if a and f and p or c then r',
+//     'if d or k and l then o and e',
+//     'if r and a or f then h and m',
+//     'if m or d and k or o then d',
+//     'if s and c then l and h',
+//     'if h then e',
+//     'if e and l then s',
+//     'if d or p and n then p and r',
+//     'if r and s or e then f',
+//     'if f and e or p and r then goal',
+//     'if o and l or n then k',
+//     'if m or c then d',
+//     'if k and a and o then goal',
+//     'if s and e and r then l'
+// ];
 
 let baseOfKnowledge = new Vue({
     el: '#app',
