@@ -1,10 +1,14 @@
 Vue.component('rule', {
     props: ['index', 'rule'],
     template: `<div :class="['rule', {rule_activated: rule.isActive}, {rule_selected: rule.isSelected}]">
-                    <span class="rule_number">{{index}})</span>
-                    <span class="rule_text">{{rule.text}}</span>
-                    <i @click='editRule' class="rule_edit material-icons" v-if="!isRunning">edit</i>
-                    <i @click='deleteRule' class="rule_delete material-icons" v-if="!isRunning">delete</i>
+                    <div>
+                        <span class="rule_number">{{index}})</span>
+                        <span class="rule_text">{{rule.text}}</span>
+                    </div>                    
+                    <div class="buttons"> 
+                        <i @click='editRule' class="rule_edit material-icons" v-if="!isRunning">edit</i>
+                        <i @click='deleteRule' class="rule_delete material-icons" v-if="!isRunning">delete</i>
+                    </div>                    
                 </div>`,
     computed: {
         isRunning: function () {
@@ -166,9 +170,9 @@ let baseOfKnowledge = new Vue({
                 return;
             }
             //если задан массив стартовых правил
-            if(startRules) {
-                saveRules();
-            }
+            // if(startRules) {
+            //     saveRules();
+            // }
             //Проверяем все правила на наличие GOAL
             let goalIsPresent = false;
             for(let ruleObj of this.ruleObjects) {
