@@ -104,7 +104,6 @@ html, body {
 .initial_data_wrapper {
     padding-left: 10px;
     display: flex;
-    flex-wrap: wrap;
     justify-content: flex-start;
     align-items: center;
     width: calc(100% / 3);

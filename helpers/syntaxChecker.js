@@ -38,11 +38,11 @@ function isFact(value) {
     return true;
 }
 
-// function p(text) {
-//     alert(text);
-//     // document.write(text);
-//     // document.writeln("<br>");
-// }
+function p(text) {
+    alert(text);
+    // document.write(text);
+    // document.writeln("<br>");
+}
 
 function buildRuleObj(ruleString) {
     var rule = {};
