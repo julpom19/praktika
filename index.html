@@ -10,59 +10,48 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
     </head>
     <body>
-        <div id="app" class="wrapper">
-            <div class="column">
-                <div class="card">
-                    <div class="card-body">
+        <div id="app" class="big_wrapper">
+            <div class="wrapper">
+                <div class="one_more_wrapper">
+                <div class="column">
+                    <div class="column_title">
                         <h3 class="h3">База знань</h3>
                     </div>
-                </div>
 
-                <div class="rules card">
-                    <div class="card-body">
+                    <div class="rules">
                         <button id="add_rule_btn" @click="showModal" class="btn btn-outline-primary" v-if="!isRunning">Додати нове правило</button>
                         <div v-if="rules.length == 0" class="placeholder">Список правил пустий</div>
                         <rule v-for="(rule, index) in rules" :rule="rule" :index="index"></rule>
                     </div>
                 </div>
-            </div>
-            <div class="column">
-                <div class="card">
-                    <div class="card-body">
+                <div class="column">
+                    <div class="column_title">
                         <h3 class="h3">Робоча пам'ять</h3>
                     </div>
-                </div>
 
-                <div class="working-memory card">
-                    <div class="card-body">
+                    <div class="working-memory">
                         <fact_row v-for="factsArray in workingMemory" :array_of_facts="factsArray"></fact_row>
                     </div>
                 </div>
-            </div>
-            <div class="column">
-                <div class="card">
-                    <div class="card-body">
+                <div class="column">
+                    <div class="column_title">
                         <h3 class="h3">Робочий список правил</h3>
                     </div>
-                </div>
-                <div class="working-rules card">
-                    <div class="card-body">
+                    <div class="working-rules">
                         <working_rules_row v-for="ruleIndexesArray in workingListOfRules" :array_of_rule_indexes="ruleIndexesArray"></working_rules_row>
                     </div>
                 </div>
-            </div>
-            <div class="column">
-                <div class="card">
-                    <div class="card-body">
+                <div class="column">
+                    <div class="column_title">
                         <h3 class="h3">Обране правило</h3>
                     </div>
-                </div>
-                <div class="choosed_rules card">
-                    <div class="card-body">
+                    <div class="choosed_rules">
                         <choosed_rule v-for="selectedIndex in selectedRulesIndexes" :rule_index="selectedIndex"></choosed_rule>
                     </div>
                 </div>
+                </div>
             </div>
+
             <div class="footer">
                 <div class="initial_data_wrapper">
                     <table>

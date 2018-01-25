@@ -54,8 +54,8 @@ function buildRuleObj(ruleString) {
 
 function buildNode(expression, parentNode) {
     var node = {}
-    var expsOr = expression.split("or");
-    var expsAnd = expression.split("and");
+    var expsOr = expression.split(" or ");
+    var expsAnd = expression.split(" and ");
     if(expsOr.length > 1) {
         node.value = "or";
         node.children = [];

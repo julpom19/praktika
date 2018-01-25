@@ -7,47 +7,78 @@ html, body {
     width: 100%;
     padding: 5px;
     margin: 0;
+    min-width: 900px;
 
 }
 
+.big_wrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .wrapper {
+
+    /*border: solid 1px #007bff;*/
+    /*height: 80%;*/
+
+    flex-grow: 1;
     position: relative;
+}
+
+.one_more_wrapper {
+    height: 100%;
+    position: absolute;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    /*border: solid 1px #007bff;*/
-    height: 100%;
     width: 100%;
 }
 
 .column {
     width: calc(100% / 4);
-    height: calc(100% - 100px);
+    height: 100%;
     padding-right: 5px;
     padding-left: 5px;
+
+}
+.column_title {
+    height: 10%;
+    border: 1px solid #b5b5b5;
+    border-radius: 5px;
+    position: relative;
 }
 
 .rules, .working-memory, .working-rules, .choosed_rules {
     padding: 10px;
     overflow: auto;
-    height: calc(100% - 10% - 5px);
+    height: 85%;
     margin-top: 5px;
+    border: 1px solid #b5b5b5;
+    border-radius: 5px;
 
 }
 
-.flexWrapper {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
+/*.flexWrapper {*/
+    /*width: 100%;*/
+    /*display: flex;*/
+    /*justify-content: space-between;*/
+/*}*/
 
-.flexWrapper > input, .flexWrapper > select {
-    flex-grow: 2;
-}
+/*.flexWrapper > input, .flexWrapper > select {*/
+    /*flex-grow: 2;*/
+/*}*/
 
 .h3 {
     font-size: 18px !important;
     text-align: center;
+    white-space: pre;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 /*****************RULES******************/
@@ -106,15 +137,19 @@ html, body {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    width: calc(100% / 3);
+    width: calc(100% / 2);
+}
+
+.initial_data_wrapper span {
+    white-space: pre;
 }
 
 /*.initial_data_wrapper > table {*/
     /*border: solid 1px;*/
 /*}*/
 
-.initial_data_wrapper input, .initial_data_wrapper select, .initial_data_wrapper table {
-    width: 100%;
+.initial_data_wrapper input, .initial_data_wrapper select{
+    width: 200px;
 }
 
 .btn_wrapper {

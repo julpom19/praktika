@@ -50,24 +50,24 @@ Vue.component('choosed_rule', {
     template: `<p>{{rule_index}}</p>`,
 });
 
-// let startRules = [
-//     'if a and b and n then f',
-//     'if c and k or l then p or ',
-//     'if a and f and p or c then r',
-//     'if d or k and l then o and e',
-//     'if r and a or f then h and m',
-//     'if m or d and k or o then d',
-//     'if s and c then l and h',
-//     'if h then e',
-//     'if e and l then s',
-//     'if d or p and n then p and r',
-//     'if r and s or e then f',
-//     'if f and e or p and r then goal',
-//     'if o and l or n then k',
-//     'if m or c then d',
-//     'if k and a and o then goal',
-//     'if s and e and r then l'
-// ];
+let startRules = [
+    'if a and b and n then f',
+    'if c and k or l then p or ',
+    'if a and f and p or c then r',
+    'if d or k and l then o and e',
+    'if r and a or f then h and m',
+    'if m or d and k or o then d',
+    'if s and c then l and h',
+    'if h then e',
+    'if e and l then s',
+    'if d or p and n then p and r',
+    'if r and s or e then f',
+    'if f and e or p and r then goal',
+    'if o and l or n then k',
+    'if m or c then d',
+    'if k and a and o then goal',
+    'if s and e and r then l'
+];
 
 let baseOfKnowledge = new Vue({
     el: '#app',
@@ -201,6 +201,8 @@ let baseOfKnowledge = new Vue({
                 this.ruleAntecedentNodes.push(buildNode(ruleObj.antecedent));
             }
             store.commit('setRunning');
+            console.log('workingMemory', this.workingMemory);
+            console.log('this.ruleAntecedentNodes', this.ruleAntecedentNodes);
         },
         next: function () {
             //проверяем достигнута ли цель
@@ -221,11 +223,14 @@ let baseOfKnowledge = new Vue({
             }
             for(let i = 0; i < this.ruleAntecedentNodes.length; i++) {
                 let node = this.ruleAntecedentNodes[i];
+                console.log('NODE', node);
                 let isActivated = checkNode(node, this.workingMemory[this.activeIndex]);
+                console.log('isActivated', isActivated);
                 if(isActivated) {
                     // this.rules[i].isActive = true;
                     let isNew = isRuleNew(this.workingListOfRules, i);
                     // console.log('i', i);
+                    console.log('isNew', isNew);
                     if(isNew) {
                         // console.log('I', i);
                         arrayOfActiveRules.push(i);
